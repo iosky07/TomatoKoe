@@ -1,0 +1,50 @@
+{% extends 'layouts/master.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="" style="margin-top: 70px">
+        <section class="section">
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <a href="{% url 'form' %}" class="-ml- btn btn-primary shadow-none">Tambah Artikel</a>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover table-bordered">
+                                <tr>
+                                    <th>Judul</th>
+                                    <th>Author</th>
+                                    <th>Tag</th>
+                                    <th>Thumbnail</th>
+                                    <th>Tanggal</th>
+                                    <th>Aksi</th>
+                                </tr>
+                                {% for a in articles %}
+                                    <tr>
+                                        <td>{{ a.title }}</td>
+                                        <td>{{ a.writter }}</td>
+                                        <td>{{ a.category_id }}</td>
+                                        <td><img src="/media/{{ a.photo }}" style="width: 150px; height: 100px"
+                                                 alt="..."></td>
+                                        <td>{{ a.created_at }}</td>
+                                        <td>
+                                            <a href="{% url 'update-article' a.id %}"
+                                               class="btn btn-warning text-light"><i
+                                                    class="fa fa-16px fa-pencil-alt"></i> Update</a>
+                                            <a href="{% url 'delete-article' a.id %}" class="btn btn-danger text-light"><i
+                                                    class="fa fa-16px fa-trash"></i> Hapus</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+{% endblock %}

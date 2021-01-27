@@ -1,0 +1,21 @@
+{% extends 'layouts/master.html' %}
+
+{% block content %}
+
+    {% for i in data %}
+        <div class="container" style="background-color: white; margin-top: 30px; border-radius: 10px;">
+            <div style="text-align: center">
+                <label for="" style="margin-top: 30px; margin-bottom: 10px"><h2><b>{{ i.title }}</b></h2></label>
+            </div>
+            <img src="/media/{{ i.photo }}" class="align-top"
+                 style="width: 700px;   display: block; margin-top: 50px; margin-bottom: 50px; margin-left: auto; margin-right: auto;">
+            <p class="container">{{ i.content }}</p>
+            <div style="margin-top: 50px;">
+                <p><b>Category:</b> {{ i.category_id }}</p>
+                <label for="" style="margin-bottom: 30px"><p><b>Diunggah pada:</b> {{ i.created_at }} | {{ i.writter }}</p></label>
+            </div>
+
+        </div>
+    {% endfor %}
+
+{% endblock %}
